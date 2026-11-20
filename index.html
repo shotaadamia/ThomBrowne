@@ -361,7 +361,6 @@ body.focus header.hero{cursor:pointer}
  .mback{display:none!important}
  body.focus .lvback{display:grid;place-items:center;flex:none;width:30px;height:30px;margin-right:12px;border:1px solid rgba(255,255,255,.45);color:#fff;font-size:15px;cursor:pointer;-webkit-tap-highlight-color:transparent}
  body.focus .lv.on .row{justify-content:flex-start}
- .mnav{flex-wrap:wrap;justify-content:flex-end;row-gap:7px;max-width:76px}
  .mnav .mdots{display:flex;flex-direction:row;gap:5px;width:100%;height:auto;border:0;justify-content:center;pointer-events:none}
  .mnav .mdots b{width:6px;height:6px;border:1px solid rgba(255,255,255,.6)}
  .mnav .mdots b.on{background:#fff;border-color:#fff}
@@ -386,6 +385,22 @@ body.focus header.hero{cursor:pointer}
  body.lvl3 .prio.on .pdots b.on{background:#fff;border-color:#fff}
  body.lvl3 .prio.on p{grid-row:4}
  body.lvl3 .prio.on .mnav{grid-row:2/4;align-self:center}
+ body.focus .lv.on .ldots,body.lvl3 .prio.on .pdots{display:none}
+ .mnav{align-items:center}
+ .mnav .ndots{display:flex;gap:4px;width:auto;height:auto;border:0;margin-right:6px;pointer-events:none}
+ .mnav .ndots b{width:6px;height:6px;border:1px solid rgba(255,255,255,.6)}
+ .mnav .ndots b.on{background:#fff;border-color:#fff}
+ body.focus .lv.on .tt{padding-right:108px}
+ body.lvl3 .lv.on .tt{padding-right:108px}
+ body.focus .lv.on .tt h3{font-size:min(14px,3.5vw);letter-spacing:.035em}
+ body.lvl3 .prio.on .mnav{grid-row:2;align-self:center}
+ body.lvl3 .prio.on p{grid-row:3}
+ body.focus .lv.on .mnav{gap:4px}
+ body.focus .lv.on .mnav span[data-d]{width:28px;height:28px}
+ body.focus .lv.on .tt,body.lvl3 .lv.on .tt{padding-right:94px}
+ body.focus .lvback{width:28px;height:28px}
+ body.focus .lv.on .tt h3{font-size:min(14px,3.2vw)}
+ body.focus .lv.on .tt,body.lvl3 .lv.on .tt{padding-right:100px}
 }
 @keyframes unravel{from{opacity:0;transform:translateY(-18px) scaleY(.85);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0 0 0 0)}}
 @keyframes ravel{from{opacity:1;transform:none;clip-path:inset(0 0 0 0)}to{opacity:0;transform:translateY(-18px) scaleY(.85);clip-path:inset(0 0 100% 0)}}
@@ -476,7 +491,7 @@ const ORDER={"Foundational":0,"Near-Term":1,"Compounding":2};
 L.forEach(l=>l.p.sort((x,y)=>ORDER[x.weight]-ORDER[y.weight]));
 const fitEl=document.getElementById('fit'), topEl=document.getElementById('topEl'), stage=document.getElementById('stage');
 let st={l:null,p:null}, prev={l:null,p:null};
-function mnav(i,n){return `<span class="mnav"><span role="button" aria-label="Previous" data-d="-1" class="${i===0?'off':''}">←</span><span role="button" aria-label="Next" data-d="1" class="${i===n-1?'off':''}">→</span></span>`;}
+function mnav(i,n){return `<span class="mnav"><span class="ndots">${Array.from({length:n},(_,k)=>`<b class="${k===i?'on':''}"></b>`).join('')}</span><span role="button" aria-label="Previous" data-d="-1" class="${i===0?'off':''}">←</span><span role="button" aria-label="Next" data-d="1" class="${i===n-1?'off':''}">→</span></span>`;}
 function pstep(d){
   let l=st.l, p=st.p+d;
   if(p>=L[l].p.length){ if(l===L.length-1) return null; l++; p=0; }
@@ -485,7 +500,8 @@ function pstep(d){
 }
 function pnav(){
   const first=st.l===0&&st.p===0, last=st.l===L.length-1&&st.p===L[st.l].p.length-1;
-  return `<span class="mnav"><span role="button" aria-label="Previous" data-d="-1" class="${first?'off':''}">←</span><span role="button" aria-label="Next" data-d="1" class="${last?'off':''}">→</span></span>`;
+  const pi=st.p, pn=L[st.l].p.length;
+  return `<span class="mnav"><span class="ndots">${Array.from({length:pn},(_,k)=>`<b class="${k===pi?'on':''}"></b>`).join('')}</span><span role="button" aria-label="Previous" data-d="-1" class="${first?'off':''}">←</span><span role="button" aria-label="Next" data-d="1" class="${last?'off':''}">→</span></span>`;
 }
 function topRow(){
   const c=st.l!==null;
