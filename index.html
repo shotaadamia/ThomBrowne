@@ -112,7 +112,7 @@ body.focus .obj span.d{font-size:14.5px}
  .d3 .card.dark{grid-area:meas}
  .d3>.card:nth-child(2) .qs{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;margin-top:18px}
  .d3>.card:nth-child(2) .qs li{margin-bottom:0;min-height:2.9em}
- .d3>.card.issue p{min-height:3em}
+ .d3>.card.issue p{min-height:var(--dq,3em)}
 }
 .chain{display:flex;align-items:center;gap:6px;flex-wrap:nowrap;margin-top:20px}
 .chain span{background:var(--paper);padding:5px 8px;font-size:11.5px;letter-spacing:.1em}
@@ -379,7 +379,7 @@ const L = [
     profit:"Higher full-price sell-through.",
     m:["Category sales per sq ft/m", "Sell-through", "Core-size in-stock", "Staffing / conversion"]},
    {name:"AI & Automation", weight:"Compounding", role:"Efficiency", short:"Process automation, workforce productivity enhancement, and capacity redeployment.",
-    issue:"AI tools can take on routine work, free up capacity, and enable deeper analysis of large data sets.",
+    issue:"AI tools can take on routine work, free up capacity, and enable deeper analysis of big data.",
     areas:["Which processes can be automated first?", "Where should freed capacity go?", "Where can AI sharpen allocation?", "Which external AI tools should be introduced?"],
     profit:"More output per team member.",
     m:["Hours automated", "Capacity redeployed", "AI tool adoption", "Revenue per employee"]},
@@ -395,7 +395,7 @@ const L = [
   measures:[["Client acquisition, retention, lapse, reactivation"],["NPS"],["Digital conversion"],["Omni attribution"],["VIC margin"]],
   p:[
    {name:"Partnerships & Activations", weight:"Foundational", role:"Acquisition", short:"Selective products and events that expand client reach and strengthen brand positioning.",
-    issue:"Introduce products and experiences to adjacent client groups while strengthening brand equity.",
+    issue:"Introduce product to adjacent client groups while strengthening brand equity.",
     areas:["Which partner brands strengthen positioning?", "Which entry categories widen reach without diluting price levels?", "Which activations lead to conversion?", "How can we leverage partnership impressions?"],
     profit:"Incremental full-price sales from new clients.",
     m:["New clients", "AUR", "Event sales attribution", "New client repeat purchases"]},
@@ -416,7 +416,7 @@ const L = [
   measures:[["IMU"],["On-time delivery"],["ROIC"],["Days from receipt to availability"],["Inventory turn"]],
   p:[
    {name:"Sourcing Efficiency", weight:"Foundational", role:"Supply Chain", short:"Leaner sourcing that creates room for stronger pricing power and higher margins.",
-    issue:"End-to-end efficiency, from fabric sourcing and sampling to shipping and landing, frees up margin.",
+    issue:"End-to-end efficiency frees up margin: from sourcing and sampling to shipping and landing.",
     areas:["What process steps can be streamlined or eliminated?", "How can costing support stronger pricing power?", "Do shorter lead times raise sell-through?", "How does IMU expansion flow to Adjusted EBIT?"],
     profit:"Lower cost of sales lifts IMU and margin.",
     m:["Lead time", "IMU by category", "Landing cost", "Cost by vendor"]},
@@ -512,6 +512,7 @@ function fit(){
     const avail=stage.clientHeight-48-topEl.offsetHeight; applyScale(needScale(avail)); return; }
   if(GS===null) { computeGS(); render(); }
   applyScale(GS);
+  desktopEq();
 }
 const SEL={1:'.lv',2:'.lhead,.prio,.measures',3:'.detail .card'};
 const depth=(l,p)=>l===null?1:p===null?2:3;
@@ -555,6 +556,19 @@ function equalizeL3(){
   mx.forEach((v,k)=>document.body.style.setProperty('--eq'+k,v+'px'));
   EQW=window.innerWidth;
 }
+let DQW=null;
+function desktopEq(){
+  if(window.innerWidth<981||st.p===null) return;
+  const panel=fitEl.querySelector('.panel'); if(!panel) return;
+  const key=window.innerWidth+'x'+fitEl.style.width; if(DQW===key) return;
+  const box=document.createElement('div'); box.style.cssText='position:absolute;left:0;right:0;top:0;visibility:hidden;pointer-events:none';
+  const saved={...st}, savedPrev={...prev}; let html='';
+  L.forEach((l,i)=>l.p.forEach((_,j)=>{st={l:i,p:j}; prev={...st}; html+=detail();}));
+  st=saved; prev=savedPrev; box.innerHTML=html; panel.style.position='relative'; panel.appendChild(box);
+  let mx=0; box.querySelectorAll('.card.issue p').forEach(p=>{p.style.minHeight='0'; mx=Math.max(mx,p.offsetHeight);});
+  box.remove();
+  document.body.style.setProperty('--dq',mx+'px'); DQW=key;
+}
 function doGo(l,p){
   prev={...st}; st={l,p};
   document.body.classList.toggle('focus',l!==null);
@@ -589,7 +603,7 @@ function doGo(l,p){
     els.forEach(e=>{e.style.setProperty('--dx',(d*-14)+'px'); e.classList.remove('bump'); void e.offsetWidth; e.classList.add('bump');});
   }
 })();
-window.addEventListener('resize',()=>{GS=null; EQW=null; equalizeL3(); setTimeout(()=>{fit();},50);});
+window.addEventListener('resize',()=>{GS=null; EQW=null; DQW=null; equalizeL3(); setTimeout(()=>{fit();},50);});
 go(null,null);
 </script>
 </body>
