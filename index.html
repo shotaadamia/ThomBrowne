@@ -147,6 +147,7 @@ body:not(.focus) .stage{padding-top:40px}
 .lv .row h3{margin-top:0!important}
 
 .mback{display:none}
+body.focus header.hero{cursor:pointer}
 @media(min-width:981px){body.focus .stage{padding-top:18px}body:not(.focus) .lv{padding:28px 26px}body:not(.focus) .lv li{padding:6px 0}}
 .credit{flex:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3AAB6;text-align:right;padding:0 0 14px}
 .mnav{display:none}
@@ -603,6 +604,7 @@ function doGo(l,p){
     els.forEach(e=>{e.style.setProperty('--dx',(d*-14)+'px'); e.classList.remove('bump'); void e.offsetWidth; e.classList.add('bump');});
   }
 })();
+document.querySelector('header.hero').addEventListener('click',()=>{if(st.l!==null) go(null,null);});
 window.addEventListener('resize',()=>{GS=null; EQW=null; DQW=null; equalizeL3(); setTimeout(()=>{fit();},50);});
 go(null,null);
 </script>
