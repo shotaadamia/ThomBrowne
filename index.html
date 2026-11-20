@@ -154,6 +154,7 @@ body.focus header.hero{cursor:pointer}
 @media(min-width:981px){body.focus .stage{padding-top:18px}body:not(.focus) .lv{padding:28px 26px}body:not(.focus) .lv li{padding:6px 0}}
 .credit{flex:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3AAB6;text-align:right;padding:0 0 14px}
 .mnav{display:none}
+.lvback,.mdots,.ldots,.pdots{display:none}
 .msub{display:none}
 .notrans,.notrans *{transition:none!important;animation:none!important}
 @media(min-width:981px){.prios.compact .prio{padding:20px 22px}.prios.compact .prio .role{margin-bottom:0}.prios.compact .prio h4{font-size:19px}.prios.compact .prio .more{margin-top:14px}.prios.compact .prio .tags{margin-bottom:8px}}
@@ -356,6 +357,35 @@ body.focus header.hero{cursor:pointer}
  body.lvl3 .card .label{margin-bottom:8px}
  body.lvl3 .qs li{margin-bottom:10px}
  body.lvl3 .qs li:last-child{margin-bottom:0}
+ /* back + position dots live inside the navy cards */
+ .mback{display:none!important}
+ body.focus .lvback{display:grid;place-items:center;flex:none;width:30px;height:30px;margin-right:12px;border:1px solid rgba(255,255,255,.45);color:#fff;font-size:15px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+ body.focus .lv.on .row{justify-content:flex-start}
+ .mnav{flex-wrap:wrap;justify-content:flex-end;row-gap:7px;max-width:76px}
+ .mnav .mdots{display:flex;flex-direction:row;gap:5px;width:100%;height:auto;border:0;justify-content:center;pointer-events:none}
+ .mnav .mdots b{width:6px;height:6px;border:1px solid rgba(255,255,255,.6)}
+ .mnav .mdots b.on{background:#fff;border-color:#fff}
+ body.focus .stage{padding-top:12px}
+ body.focus .levers.compact .lv.on{min-height:0}
+ body.focus .lv.on .tt{flex:1;min-width:0;padding-right:80px}
+ body.lvl3 .lv.on .tt{padding-right:0}
+ body.focus .lv.on .ldots{display:flex;gap:5px;margin-top:7px}
+ body.focus .lv.on .ldots b{width:6px;height:6px;border:1px solid rgba(255,255,255,.6)}
+ body.focus .lv.on .ldots b.on{background:#fff;border-color:#fff}
+ body.lvl3 .lv.on .ldots{display:none}
+ body.focus .lvback{margin-right:12px}
+ body.focus .levers .lv{min-width:0}
+ body.focus .lv.on .tt h3{font-size:min(15px,3.75vw);letter-spacing:.06em;overflow:hidden;text-overflow:ellipsis}
+ body.focus .lv.on .tt{padding-right:76px}
+ body.lvl3 .lv.on .tt{padding-right:0}
+ body.focus .lv.on .row{gap:10px}
+ body.focus .lvback{margin-right:0}
+ body.focus .lv.on .tt h3{font-size:min(14.5px,3.65vw);letter-spacing:.04em}
+ body.lvl3 .prio.on .pdots{display:flex;gap:5px;grid-row:3;grid-column:1;margin-top:7px}
+ body.lvl3 .prio.on .pdots b{width:6px;height:6px;border:1px solid rgba(255,255,255,.6)}
+ body.lvl3 .prio.on .pdots b.on{background:#fff;border-color:#fff}
+ body.lvl3 .prio.on p{grid-row:4}
+ body.lvl3 .prio.on .mnav{grid-row:2/4;align-self:center}
 }
 @keyframes unravel{from{opacity:0;transform:translateY(-18px) scaleY(.85);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0 0 0 0)}}
 @keyframes ravel{from{opacity:1;transform:none;clip-path:inset(0 0 0 0)}to{opacity:0;transform:translateY(-18px) scaleY(.85);clip-path:inset(0 0 100% 0)}}
@@ -466,7 +496,7 @@ function topRow(){
   ${back?`<div class="mback"><button class="bk" aria-label="Back to ${back.t}"><i>←</i><span>${back.t}</span></button><span class="dots" aria-hidden="true">${Array.from({length:back.n},(_,k)=>`<b class="${k===back.i?'on':''}"></b>`).join('')}</span></div>`:''}
   <div class="levers${c?' compact':''}">`+L.map((l,i)=>`
    <button class="lv${st.l===i?' on':''}${st.l===i&&prev.l===null?' enter':''}" data-l="${i}" aria-expanded="${st.l===i}">
-     <div class="row"><h3 class="one">${l.name}</h3><span class="chev" aria-hidden="true">⌄</span></div>${st.l===i?mnav(i,L.length):''}
+     <div class="row">${st.l===i?`<span class="lvback" role="button" aria-label="Back">↑</span>`:''}<div class="tt"><h3 class="one">${l.name}</h3>${st.l===i?`<span class="ldots">${L.map((_,k)=>`<b class="${k===i?'on':''}"></b>`).join('')}</span>`:''}</div><span class="chev" aria-hidden="true">⌄</span></div>${st.l===i?mnav(i,L.length):''}
      <ul>${l.p.map(p=>`<li><span class="one">${p.name}</span></li>`).join('')}</ul>
    </button>`).join('')+`</div>`;
 }
@@ -474,7 +504,7 @@ function panel(){
   if(st.l===null) return '';
   const l=L[st.l], c=st.p!==null, anim=prev.l!==st.l?' fade':'';
   let h=`<div class="panel${anim}"><div class="lhead"><p>${l.intro}</p></div>
-   <div class="prios${c?' compact':''}">${l.p.map((p,i)=>`<button class="prio${st.p===i?' on':''}${st.p===i&&prev.p===null?' enter':''}" data-p="${i}" aria-expanded="${st.p===i}"><div class="tags">${p.role?`<span class="role label">${p.role}</span>`:''}${p.weight?`<span class="wt label">${p.weight}</span>`:''}</div><h4 class="one">${p.name}</h4><p>${p.short}</p><div class="more label"><i>→</i>${st.p===i?'Close':'See detail'}</div>${st.p===i?pnav():''}</button>`).join('')}</div>`;
+   <div class="prios${c?' compact':''}">${l.p.map((p,i)=>`<button class="prio${st.p===i?' on':''}${st.p===i&&prev.p===null?' enter':''}" data-p="${i}" aria-expanded="${st.p===i}"><div class="tags">${p.role?`<span class="role label">${p.role}</span>`:''}${p.weight?`<span class="wt label">${p.weight}</span>`:''}</div><h4 class="one">${p.name}</h4>${st.p===i?`<span class="pdots">${l.p.map((_,k)=>`<b class="${k===i?'on':''}"></b>`).join('')}</span>`:''}<p>${p.short}</p><div class="more label"><i>→</i>${st.p===i?'Close':'See detail'}</div>${st.p===i?pnav():''}</button>`).join('')}</div>`;
   if(!c) h+=`<div class="measures"><div class="label">Strategy KPI<span style="text-transform:none">s</span></div><div class="mgrid${l.measures.length<=5?' row':''}">${l.measures.map(([m,t,p])=>`<div class="${p?'p':''}${m.length>40?' long':''}">${m}</div>`).join('')}</div></div>`;
   else h+=detail();
   return h+'</div>';
@@ -490,6 +520,7 @@ function detail(){
 }
 function render(){
   topEl.innerHTML=topRow(); fitEl.innerHTML=panel();
+  const lb=topEl.querySelector('.lvback'); if(lb) lb.onclick=e=>{e.stopPropagation(); go(st.p!==null?st.l:null,null);};
   const bk=topEl.querySelector('.mback .bk'); if(bk) bk.onclick=()=>go(st.p!==null?st.l:null,null);
   topEl.querySelectorAll('.lv .mnav span').forEach(b=>b.onclick=e=>{e.stopPropagation(); go(st.l+(+b.dataset.d),null);});
   fitEl.querySelectorAll('.prio .mnav span').forEach(b=>b.onclick=e=>{e.stopPropagation(); const t=pstep(+b.dataset.d); if(t) go(t[0],t[1]);});
