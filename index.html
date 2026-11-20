@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DTC-Led Growth & Profitability at Thom Browne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1F2A44;--navy2:#2E3B5C;--ink:#1B1F27;--body:#3A404C;--muted:#6B7280;--line:#DCE0E6;--paper:#F3F4F7;--red:#A8232F;--redbg:#FBEFF0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1400px;margin:0 auto;padding:0 40px;width:100%}
+.app{display:flex;flex-direction:column;min-height:100vh}
+@media(min-width:981px){.app{height:100vh;overflow:hidden}}
+.label{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.one{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* header */
+header.hero{background:var(--navy);text-align:center;padding:46px 0 40px;transition:padding .35s}
+.hero h1{color:#fff;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:clamp(24px,2.5vw,34px);transition:font-size .35s}
+.hero p{color:#D3D9E4;font-size:18px;max-width:1000px;margin:14px auto 0;max-height:90px;overflow:hidden;transition:all .35s}
+body.focus header.hero{padding:14px 0}
+body.focus .hero h1{font-size:17px;letter-spacing:.12em}
+body.focus .hero p{max-height:0;margin-top:0;opacity:0}
+
+.stage{flex:1;min-height:0;overflow:hidden;padding:28px 0 20px}
+body:not(.focus) .stage{padding-top:40px}
+.fit{transform-origin:top left}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* objective bar */
+.obj{display:flex;align-items:center;gap:18px;background:var(--red);color:#fff;padding:16px 22px;margin-bottom:16px}
+.obj .label{color:#F6D3D7}
+.obj b{font-size:21px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.obj span.d{color:#F6DDE0;font-size:16px;margin-left:auto}
+body.focus .obj span.d{font-size:14.5px}
+.hint{display:flex;align-items:center;gap:10px;color:var(--red);margin:0 0 12px}
+.hint::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* levers */
+.levers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lv{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--line);padding:24px 26px;transition:border-color .2s,box-shadow .2s,background .2s,padding .35s}
+@media(hover:hover){.lv:hover{border-color:var(--navy);box-shadow:0 10px 26px rgba(31,42,68,.10)}}
+.lv:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.lv .row{display:flex;align-items:center;justify-content:space-between}
+.lv .num{color:var(--red)}
+.lv .chev{width:30px;height:30px;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--navy);font-size:15px;transition:transform .3s,background .2s,border-color .2s}
+@media(hover:hover){.lv:hover .chev{background:var(--navy);border-color:var(--navy);color:#fff}}
+.lv h3{font-size:min(23px,calc(2.2vw - 9px));font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);margin-top:10px}
+.lv .sub{font-size:16.5px;color:var(--body);margin-top:4px}
+.lv ul{list-style:none;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.lv li{font-size:17px;color:var(--ink);padding:5px 0;display:flex;gap:10px;align-items:center}
+.lv li::before{content:"";flex:none;width:12px;height:2px;background:var(--red)}
+.levers.compact .lv{padding:14px 20px}
+.levers.compact .lv ul{display:none}
+.levers.compact .lv h3{font-size:min(18px,calc(2vw - 7px));margin-top:4px}
+.levers.compact .lv .sub{font-size:14.5px;margin-top:2px}
+.levers.compact .lv .chev{width:24px;height:24px;font-size:12px}
+.lv.on{background:var(--navy);border-color:var(--navy)}
+.lv.on h3{color:#fff}.lv.on .sub{color:#C9D0DC}.lv.on .num{color:#F4B9C0}
+.lv.on .chev{background:var(--red);border-color:var(--red);color:#fff;transform:rotate(180deg)}
+.lv.on::after,.prio.on::after{content:"";position:absolute;left:50%;bottom:-11px;transform:translateX(-50%);border:10px solid transparent;border-bottom:0;border-top-color:var(--navy)}
+
+/* lever panel */
+.panel{margin-top:18px;border-top:3px solid var(--navy);padding:16px 0 0}
+.lhead{margin-bottom:14px}
+.lhead p{font-size:17px;color:var(--body)}
+.profit{flex:none;box-sizing:border-box;width:100%;background:var(--redbg);color:var(--red);padding:8px 12px;font-size:12.5px}
+.prios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.prio{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--line);padding:20px 22px;transition:all .2s}
+@media(hover:hover){.prio:hover{border-color:var(--navy);box-shadow:0 10px 26px rgba(31,42,68,.10)}}
+.prio:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.prio .role{align-self:flex-start;background:var(--redbg);color:var(--red);padding:3px 8px;margin-bottom:8px;font-size:11.5px}
+.prio h4{font-size:19px;font-weight:600;color:var(--navy)}
+.prio p{font-size:16px;color:var(--body);margin-top:6px;flex:1}
+.prio .more{margin-top:14px;display:flex;align-items:center;gap:8px;color:var(--navy);font-size:12.5px}
+.prio .more i{font-style:normal;width:22px;height:22px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:12px;transition:transform .25s}
+@media(hover:hover){.prio:hover .more i{transform:translateX(3px)}}
+.prios.compact .prio{padding:13px 18px}
+.prios.compact .prio p{display:none}
+.prios.compact .prio .role{margin-bottom:5px}
+.prios.compact .prio h4{font-size:17px}
+.prios.compact .prio .more{margin-top:6px}
+.prio.on{background:var(--navy);border-color:var(--navy)}
+.prio.on h4{color:#fff}.prio.on .more{color:#C9D0DC}.prio.on .more i{background:var(--red);transform:rotate(90deg)}
+.prio.on .role{background:var(--red);color:#fff}
+.measures{margin-top:16px;background:var(--paper);padding:16px 22px}
+.measures .label{color:var(--red);margin-bottom:8px}
+.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px}
+.mgrid div{font-size:16px;padding:8px 0;border-bottom:1px solid var(--line)}
+.mgrid div.p{color:var(--red);font-weight:600}
+
+/* detail */
+.detail{margin-top:18px}
+.d3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--paper);padding:20px 22px}
+.card .label{color:var(--muted);margin-bottom:12px}
+.issue{border:1.5px solid var(--navy);background:#fff}
+.issue .label{color:var(--navy)}
+.issue p{font-size:19px;line-height:1.5;color:var(--ink)}
+@media(min-width:981px){
+ .d3{grid-template-areas:"opp opp prof" "area area meas";align-items:stretch}
+ .d3 .side{display:contents}
+ .d3>.card.issue{grid-area:opp}
+ .d3>.card:nth-child(2){grid-area:area}
+ .d3 .card.red{grid-area:prof}
+ .d3 .card.dark{grid-area:meas}
+ .d3>.card:nth-child(2) .qs{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;margin-top:18px}
+ .d3>.card:nth-child(2) .qs li{margin-bottom:0;min-height:2.9em}
+ .d3>.card.issue p{min-height:3em}
+}
+.chain{display:flex;align-items:center;gap:6px;flex-wrap:nowrap;margin-top:20px}
+.chain span{background:var(--paper);padding:5px 8px;font-size:11.5px;letter-spacing:.1em}
+.chain i{font-style:normal;color:var(--red)}
+.qs{list-style:none;counter-reset:q}
+.qs li{counter-increment:q;position:relative;padding-left:40px;font-size:17px;line-height:1.45;margin-bottom:14px;color:var(--ink)}
+.qs li:last-child{margin-bottom:0}
+.qs li::before{content:counter(q);position:absolute;left:0;top:0;width:26px;height:26px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:600}
+.side{display:flex;flex-direction:column;gap:16px}
+.card.red{background:var(--red)}.card.red .label{color:#F6D3D7}.card.red p{color:#fff;font-size:18px;line-height:1.45}
+.card.dark{background:var(--navy);flex:1}.card.dark .label{color:#AEB7C6}
+.card.dark ul{list-style:none}
+.card.dark li{color:#fff;font-size:16px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+
+.prio .tags{display:flex;gap:6px;margin-bottom:8px;justify-content:space-between;align-items:center}
+.prio .tags .role{margin-bottom:0}
+.wt{background:#fff;border:1px solid var(--navy);color:var(--navy);padding:2px 8px;font-size:11.5px}
+.prio.on .wt{background:transparent;border-color:#C9D0DC;color:#fff}
+.prios.compact .prio .tags{margin-bottom:5px}
+
+.mgrid.row{display:flex;gap:28px}
+.mgrid.row div{flex:1 1 auto;white-space:nowrap}
+/* chevrons as clear buttons on the opening page */
+body:not(.focus) .lv .chev{width:34px;height:34px;background:#fff;border:1.5px solid #B9C0CC;color:var(--navy);font-size:16px;animation:nudge 2.4s ease-in-out infinite}
+@media(hover:hover){body:not(.focus) .lv:hover .chev{background:var(--navy);border-color:var(--navy);color:#fff}}
+body:not(.focus) .obj{margin-bottom:40px}
+body.focus .obj{margin-bottom:18px}
+@keyframes nudge{0%,70%,100%{transform:translateY(0)}80%{transform:translateY(3px)}90%{transform:translateY(0)}}
+body:not(.focus) .stage{padding-top:40px}
+
+.lv .row{gap:12px}
+.lv .row h3{margin-top:0!important}
+
+.mback{display:none}
+@media(min-width:981px){body:not(.focus) .lv{padding:28px 26px}body:not(.focus) .lv li{padding:6px 0}}
+.credit{flex:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3AAB6;text-align:right;padding:0 0 14px}
+.mnav{display:none}
+.msub{display:none}
+.notrans,.notrans *{transition:none!important;animation:none!important}
+@media(max-width:980px){
+ .wrap{padding:0 18px}
+ header.hero{padding:30px 0 26px}
+ .hero h1{font-size:min(20px,calc((100vw - 44px) / 19.8));letter-spacing:.06em;line-height:1.35}
+ .hero h1 .l1{display:block;white-space:nowrap}
+ .hero p{display:none}
+ .msub{display:flex;flex-direction:column;align-items:center;list-style:none;margin:16px 0 0;padding:0;max-height:200px;overflow:hidden;transition:all .35s}
+ .msub li{color:#D3D9E4;font-size:min(16px,4.1vw);line-height:1.4;white-space:nowrap}
+ .msub li+li::before{content:"";display:block;width:18px;height:2px;background:var(--red);margin:9px auto}
+ body.focus .msub{max-height:0;margin-top:0;opacity:0}
+ body.focus header.hero{padding:12px 0}
+ body.focus .hero h1{font-size:14px}
+ .stage{padding:18px 0 40px}
+ body:not(.focus) .stage{padding-top:24px}
+ .obj,body.focus .obj,body:not(.focus) .obj{flex-wrap:wrap;gap:6px 12px;padding:12px 16px;margin-bottom:24px}
+ body.focus .stage{padding-top:16px}
+ body.focus .obj{margin-bottom:16px}
+ /* drill-down: only the opened item stays on screen */
+ .stage{overflow:clip}
+ #topEl{display:contents}
+ .mback{display:flex;position:sticky;top:0;z-index:5;align-items:center;justify-content:space-between;gap:12px;background:#fff;padding:10px 0;margin:-4px 0 10px;border-bottom:1px solid var(--line)}
+ .mback .bk{display:flex;align-items:center;gap:10px;background:none;border:0;padding:4px 0;font:inherit;color:var(--navy);cursor:pointer;min-width:0}
+ .mback .bk i{flex:none;width:30px;height:30px;display:grid;place-items:center;border:1px solid #B9C0CC;font-style:normal;font-size:16px}
+ .mback .bk span{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .mback .dots{display:flex;gap:6px;flex:none}
+ .mback .dots b{width:8px;height:8px;border:1px solid var(--navy)}
+ .mback .dots b.on{background:var(--navy)}
+ body.lvl2 .lv:not(.on),body.lvl3 .lv:not(.on),body.lvl3 .lhead,body.lvl3 .prio:not(.on){display:none}
+ body.lvl3 .levers{margin-bottom:6px}
+ body.lvl2 .panel{border-top:0;margin-top:4px;padding-top:6px}
+ body.lvl3 .panel{border-top:0;margin-top:0;padding-top:0}
+ .mnav{display:flex;gap:8px;position:absolute;right:16px}
+ .lv.on .mnav{top:50%;transform:translateY(-50%)}
+ .prio.on .mnav{bottom:14px;right:14px}
+ .mnav span{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.45);color:#fff;font-size:16px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+ .mnav span:active{background:rgba(255,255,255,.15)}
+ .mnav span.off{opacity:.25;pointer-events:none}
+ body.focus .lv.on .chev{display:none}
+ .obj b{font-size:17px}
+ .levers,.prios,.d3{grid-template-columns:1fr;gap:10px}
+ .lv{padding:16px 18px}
+ .lv h3{font-size:min(19px,4.7vw);margin-top:6px;white-space:nowrap}
+ .lv ul{margin-top:12px;padding-top:10px}
+ .lv li{font-size:16px;padding:4px 0}
+ .levers.compact .lv{padding:12px 16px}
+ .levers.compact .lv h3{font-size:16px}
+ .lv.on::after,.prio.on::after{display:none}
+ .panel{margin-top:14px;padding-top:14px}
+ .lv,.prio{scroll-margin-top:12px}
+ .lhead{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+ .lhead p{font-size:16px}
+ .profit{white-space:normal;line-height:1.5;font-size:11.5px}
+ .prio{padding:14px 16px}
+ .prio h4{font-size:17px}
+ .prio p{font-size:15.5px}
+ .prios.compact .prio{padding:10px 14px}
+ .prios.compact .prio h4{font-size:16px}
+ .measures{padding:14px 16px}
+ .mgrid,.mgrid.row{display:flex;flex-wrap:wrap;gap:6px}
+ .mgrid div,.mgrid.row div{flex:0 1 auto;white-space:normal;font-size:14.5px;line-height:1.3;padding:6px 10px;background:#fff;border:1px solid var(--line)}
+ .measures .label{margin-bottom:10px}
+ .mgrid div.long{flex:1 1 200px}
+ .mgrid div{display:flex;align-items:center}
+ .detail{margin-top:14px;scroll-margin-top:12px}
+ .card{padding:16px 18px}
+ .issue p{font-size:17px}
+ .chain{flex-wrap:nowrap;gap:5px}
+ .chain span{padding:5px 7px;font-size:10.5px;letter-spacing:.08em}
+ .qs li{font-size:16px;padding-left:36px}
+ .card.red p{font-size:16.5px}
+ .card.dark li{font-size:15.5px}
+ .one{white-space:normal;overflow:visible}
+ /* start page: compact so it fits one screen */
+ body:not(.focus) header.hero{padding:18px 0 16px}
+ body:not(.focus) .hero h1{line-height:1.3}
+ body:not(.focus) .msub{margin-top:10px}
+ body:not(.focus) .msub li{font-size:min(15px,3.9vw);line-height:1.35}
+ body:not(.focus) .msub li+li::before{margin:5px auto;width:16px}
+ body:not(.focus) .stage{padding-top:14px;padding-bottom:20px}
+ body:not(.focus) .obj{padding:10px 14px;margin-bottom:12px}
+ body:not(.focus) .obj b{font-size:16px}
+ body:not(.focus) .levers{gap:8px}
+ body:not(.focus) .lv{padding:12px 16px}
+ body:not(.focus) .lv h3{margin-top:0}
+ body:not(.focus) .lv .chev{width:26px;height:26px}
+ body:not(.focus) .lv ul{margin-top:8px;padding-top:7px}
+ body:not(.focus) .lv li{font-size:15px;padding:2px 0}
+ /* start page: fit hero, objective and levers in one screen */
+ body:not(.focus) header.hero{padding:14px 0 12px}
+ body:not(.focus) .hero h1{line-height:1.25}
+ body:not(.focus) .msub{margin-top:10px}
+ body:not(.focus) .msub li{font-size:min(14.5px,3.75vw);line-height:1.3}
+ body:not(.focus) .msub li+li::before{width:14px;margin:5px auto}
+ body:not(.focus) .stage{padding-top:12px}
+ body:not(.focus) .obj{flex-wrap:nowrap;align-items:baseline;gap:10px;padding:10px 14px;margin-bottom:12px}
+ body:not(.focus) .obj .label{font-size:10.5px}
+ body:not(.focus) .obj b{font-size:15px;white-space:nowrap}
+ body:not(.focus) .levers{gap:8px}
+ body:not(.focus) .lv{padding:11px 14px}
+ body:not(.focus) .lv h3{font-size:min(16px,4.1vw);margin-top:0}
+ body:not(.focus) .lv .chev{width:26px;height:26px;font-size:13px}
+ body:not(.focus) .lv ul{margin-top:7px;padding-top:5px}
+ body:not(.focus) .lv li{font-size:14.5px;padding:1px 0}
+ /* zoomed-in layers: compact chrome, tighter content */
+ body.focus header.hero{padding:9px 0}
+ body.focus .hero h1{font-size:13px;letter-spacing:.1em;line-height:1.2}
+ body.focus .hero h1 .l2{display:none}
+ body.focus .obj{display:none}
+ body.focus .stage{padding-top:6px;padding-bottom:24px}
+ body.focus .mback{padding:6px 0;margin:0 0 8px}
+ body.focus .mback .bk{padding:0}
+ body.focus .mback .bk i{width:28px;height:28px;font-size:14px}
+ body.focus .mback .bk span{font-size:11.5px}
+ body.focus .levers.compact .lv{padding:10px 14px;min-height:50px;justify-content:center}
+ body.focus .levers.compact .lv h3{font-size:15px}
+ body.focus .mnav{gap:6px;right:12px}
+ body.focus .mnav span{width:30px;height:30px;font-size:14px}
+ body.focus .prio.on .mnav{bottom:10px;right:10px}
+ body.lvl2 .panel{margin-top:0;padding-top:8px}
+ body.focus .lhead{margin-bottom:8px}
+ body.focus .lhead p{font-size:15px;line-height:1.45}
+ body.focus .prios{gap:8px}
+ body.focus .prio{padding:11px 14px}
+ body.focus .prio .tags{margin-bottom:6px}
+ body.focus .prio .role,body.focus .prio .wt{font-size:10.5px;padding:2px 7px}
+ body.focus .prio h4{font-size:16px}
+ body.focus .prio p{font-size:14.5px;line-height:1.45;margin-top:4px}
+ body.focus .prio .more{margin-top:8px}
+ body.focus .measures{margin-top:8px;padding:11px 14px}
+ body.focus .measures .label{margin-bottom:8px}
+ body.focus .mgrid div,body.focus .mgrid.row div{font-size:13.5px;padding:5px 9px}
+ body.focus .detail{margin-top:8px}
+ body.focus .d3,body.focus .side{gap:8px}
+ body.focus .card{padding:13px 15px}
+ body.focus .card .label{margin-bottom:6px}
+ body.focus .issue p{font-size:15.5px;line-height:1.45}
+ body.focus .chain{margin-top:12px}
+ body.focus .qs li{font-size:14.5px;line-height:1.4;margin-bottom:9px;padding-left:32px}
+ body.focus .qs li:last-child{margin-bottom:0}
+ body.focus .qs li::before{width:22px;height:22px;font-size:12px}
+ body.focus .card.red p{font-size:15px}
+ body.focus .card.dark ul{display:flex;flex-wrap:wrap;gap:6px}
+ body.focus .card.dark li{font-size:13.5px;padding:5px 9px;border:1px solid rgba(255,255,255,.3);line-height:1.3}
+ body.focus .card.red .label{margin-bottom:4px}
+ body.lvl3 .detail{margin-top:6px}
+ body.lvl3 .d3,body.lvl3 .side{gap:5px}
+ body.lvl3 .card{padding:10px 14px}
+ body.lvl3 .card .label{margin-bottom:4px}
+ body.lvl3 .card.dark li{padding:5px min(8px,2.05vw);font-size:min(13.5px,3.46vw)}
+ body.lvl3 .qs li{font-size:min(14.5px,3.72vw)}
+ body.lvl3 .issue p{font-size:min(15.5px,3.97vw)}
+ body.lvl3 .card.red p{font-size:min(15px,3.85vw)}
+ body.lvl3 .qs li{margin-bottom:6px}
+ body.lvl3 .qs li:last-child{margin-bottom:0}
+ body.lvl3 .prio.on{padding:9px 14px}
+ body.lvl3 .prio.on .tags{margin-bottom:3px}
+ body.lvl3 .prio.on .more{margin-top:4px}
+ body.lvl3 .prio.on .mnav{bottom:8px}
+ body.focus header.hero{padding:7px 0}
+ .lv.on.enter::before,.prio.on.enter::before{content:"";position:absolute;inset:-1.5px;background:#fff;border:1.5px solid var(--line);pointer-events:none;z-index:3;animation:tbFade .4s ease forwards}
+ .fade{animation:none}
+ .credit{text-align:center;font-size:9.5px;padding:10px 0 calc(16px + env(safe-area-inset-bottom))}
+ body:not(.focus) .credit{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:5px 0 calc(5px + env(safe-area-inset-bottom));background:#fff}
+ body:not(.focus) .app{padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+ .slidein{animation:slidein .28s cubic-bezier(.2,.75,.25,1) both}
+ .bump{animation:bump .25s ease}
+ .xslide{animation:slidein .5s cubic-bezier(.2,.75,.25,1) both}
+ .lv,.prio,.mback .bk{-webkit-tap-highlight-color:transparent}
+ .unravel{transform-origin:top center;animation:unravel .25s cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--i,0)*30ms)}
+ .ravel{transform-origin:top center;animation:ravel .14s cubic-bezier(.5,0,.75,0) both;animation-delay:calc(var(--i,0)*18ms)}
+ /* room for the anchored credit line */
+ body.focus header.hero{padding:6px 0}
+ body.focus .mback{padding:4px 0;margin-bottom:6px}
+ body.focus .levers.compact .lv{padding:8px 14px}
+ body.lvl3 .card .label{margin-bottom:3px}
+ body.lvl3 .d3,body.lvl3 .side{gap:4px}
+ body.lvl3 .detail{margin-top:4px}
+ body.lvl3 .qs li{margin-bottom:5px}
+ body.lvl3 .qs li:last-child{margin-bottom:0}
+ body:not(.focus) .stage{padding-top:10px}
+ body:not(.focus) .obj{margin-bottom:10px}
+ body.lvl3 .card{padding:9px 14px}
+ body.lvl3 .prio.on .more{margin-top:11px}
+ body:not(.focus) .lv{padding:10px 14px}
+ body.lvl3 .detail .card.issue{min-height:var(--eq0,0)}
+ body.lvl3 .detail .d3>.card:nth-child(2){min-height:var(--eq1,0)}
+ body.lvl3 .detail .card.red{min-height:var(--eq2,0)}
+ body.lvl3 .detail .card.dark{min-height:0}
+ body.lvl3 .lv.on .mnav{display:none}
+ body.lvl3 .prio.on{display:grid;grid-template-columns:1fr auto;column-gap:12px;align-items:center}
+ body.lvl3 .prio.on .tags{grid-column:1/-1;margin-bottom:8px}
+ body.lvl3 .prio.on .more,body.lvl3 .prio.on p{display:none}
+ body.lvl3 .prio.on .mnav{position:static;transform:none}
+ body.lvl3 .card .label{margin-bottom:8px}
+ body.lvl3 .qs li{margin-bottom:10px}
+ body.lvl3 .qs li:last-child{margin-bottom:0}
+}
+@keyframes unravel{from{opacity:0;transform:translateY(-18px) scaleY(.85);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0 0 0 0)}}
+@keyframes ravel{from{opacity:1;transform:none;clip-path:inset(0 0 0 0)}to{opacity:0;transform:translateY(-18px) scaleY(.85);clip-path:inset(0 0 100% 0)}}
+@keyframes slidein{from{opacity:0;transform:translateX(var(--dx))}to{opacity:1;transform:none}}
+@keyframes bump{50%{transform:translateX(var(--dx))}}
+@keyframes tbFade{from{opacity:1}to{opacity:0}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero"><div class="wrap">
+<h1><span class="l1">DTC-Led Growth &amp; Profitability</span><span class="l2"> at <span style="white-space:nowrap">Thom Browne</span></span></h1>
+<p>Raise omnichannel productivity, deepen client relationships, and strengthen the operating platform for&nbsp;growth.</p>
+<ul class="msub"><li>Raise omnichannel productivity.</li><li>Deepen client relationships.</li><li>Strengthen the operating platform for growth.</li></ul>
+</div></header>
+<div class="stage" id="stage"><div class="wrap"><div id="topEl"></div><div class="fit" id="fit"></div></div></div>
+<footer class="credit"><div class="wrap">Prepared by Shota Adamia</div></footer>
+</div>
+<script>
+const L = [
+ {name:"Productivity Strategy", sub:"Higher productivity across stores and digital.",
+  profit:"Higher productivity across stores, digital, and teams → Adjusted EBIT growth",
+  intro:"Match assortment and staffing to demand at each store, and give teams the data and tools to act faster.",
+  measures:[["Sales per sq ft/m"],["Sales per labor hour"],["AUR"],["Comparable sales/margin"],["Full-price sell-through"]],
+  p:[
+   {name:"Door-Level Productivity", weight:"Foundational", role:"Matrix", short:"Sales per sq ft/m as a function of assortment mix, depth, presentation, and staffing.",
+    issue:"Tailor door assortment, presentation, and staffing to local productivity, clientele, and trends.",
+    areas:["Which doors lead on sales per sq ft/m and what boosts their performance?", "What mix and depth fits each door?", "How should presentation differ by door?", "How should staffing follow door traffic?"],
+    profit:"Higher full-price sell-through.",
+    m:["Category sales per sq ft/m", "Sell-through", "Core-size in-stock", "Staffing / conversion"]},
+   {name:"AI & Automation", weight:"Compounding", role:"Efficiency", short:"Process automation, workforce productivity enhancement, and capacity redeployment.",
+    issue:"AI tools can take on routine work, free up capacity, and enable deeper analysis of large data sets.",
+    areas:["Which processes can be automated first?", "Where should freed capacity go?", "Where can AI sharpen allocation?", "Which external AI tools should be introduced?"],
+    profit:"More output per team member.",
+    m:["Hours automated", "Capacity redeployed", "AI tool adoption", "Revenue per employee"]},
+   {name:"Reporting & Decision Support", weight:"Near-Term", role:"Insights", short:"Reporting systems, data access and distribution cadence, and executive decision support strategy.",
+    issue:"Standardized reporting, analytical training, and clear review frameworks speed right decisions.",
+    areas:["Which reports are automated?", "What is the reporting cadence?", "How should data access be governed?", "Which decision frameworks and owners work best?"],
+    profit:"Faster, profit-led, data-informed decisions.",
+    m:["Report adoption", "Data accuracy", "Reporting prep time", "Decision cycle time"]}
+  ]},
+ {name:"Commercial Strategy", sub:"Wider reach, stronger digital, and upmarket depth.",
+  profit:"Wider reach, digital growth, and upmarket depth → Adjusted EBIT growth",
+  intro:"Expand client reach, enhance digital footprint, and increase repeat spending from top clients.",
+  measures:[["Client acquisition, retention, lapse, reactivation"],["NPS"],["Digital conversion"],["Omni attribution"],["VIC margin"]],
+  p:[
+   {name:"Partnerships & Activations", weight:"Foundational", role:"Acquisition", short:"Selective products and events that expand client reach and strengthen brand positioning.",
+    issue:"Introduce products and experiences to adjacent client groups while strengthening brand equity.",
+    areas:["Which partner brands strengthen positioning?", "Which entry categories widen reach without diluting price levels?", "Which activations lead to conversion?", "How can we leverage partnership impressions?"],
+    profit:"Incremental full-price sales from new clients.",
+    m:["New clients", "AUR", "Event sales attribution", "New client repeat purchases"]},
+   {name:"Digital Engagement", weight:"Near-Term", role:"Conversion", short:"Omnichannel engagement connecting in-person shopping with online discovery.",
+    issue:"Digital clienteling extends each store's reach and accelerates e-commerce growth.",
+    areas:["Which omnichannel services matter most?", "How can content lift conversion?", "How can in-store advisors stay connected online?", "Which CRM actions drive the most profit?"],
+    profit:"Higher conversion and repeat spend.",
+    m:["Digital sales growth", "Conversion by source", "Omni client spend", "Social engagement rate"]},
+   {name:"VIC Clienteling", weight:"Compounding", role:"Loyalty", short:"Personalized service and private experiences that deepen client spend and brand advocacy.",
+    issue:"Build on what drives top clients through experiences and access that are hard to match.",
+    areas:["Which VICs are ready to move up a tier?", "Which exclusives and previews raise spend most?", "Which VIC events earn the best return?", "How can VIC advocacy and its PR uplift be quantified?"],
+    profit:"Higher repeat spend and margin.",
+    m:["VIC margin", "VIC retention", "VIC NPS", "VIC referrals"]}
+  ]},
+ {name:"Operating Strategy", sub:"Leaner sourcing, stronger pricing power, and focused capex.",
+  profit:"Leaner cost, stronger pricing power, and streamlined working capital → Adjusted EBIT growth",
+  intro:"Capitalize on stronger pricing power, faster inventory flow, and focused investments.",
+  measures:[["IMU"],["On-time delivery"],["ROIC"],["Days from receipt to availability"],["Inventory turn"]],
+  p:[
+   {name:"Sourcing Efficiency", weight:"Foundational", role:"Supply Chain", short:"Leaner sourcing that creates room for stronger pricing power and higher margins.",
+    issue:"End-to-end efficiency, from fabric sourcing and sampling to shipping and landing, frees up margin.",
+    areas:["What process steps can be streamlined or eliminated?", "How can costing support stronger pricing power?", "Do shorter lead times raise sell-through?", "How does IMU expansion flow to Adjusted EBIT?"],
+    profit:"Lower cost of sales lifts IMU and margin.",
+    m:["Lead time", "IMU by category", "Landing cost", "Cost by vendor"]},
+   {name:"Capital Allocation & Cost Discipline", weight:"Compounding", role:"Growth", short:"Focused investments with strongest ROIC and a cost base that scales with sales.",
+    issue:"Investment-specific modeling with sensitivities that adapt to market and client idiosyncrasies.",
+    areas:["How do new openings, renovations, and digital upgrades rank on one scale?", "Can online client data pick the next door?", "What ownership footprint keeps costs flexible as we expand?", "Do new stores lift digital nearby?"],
+    profit:"Capital goes to the strongest returns.",
+    m:["ROIC by project", "Ramp vs. plan", "Cost accounting", "Digital boost of capex"]},
+   {name:"Fulfillment & Inventory Optimization", weight:"Near-Term", role:"Working Capital", short:"Faster inventory flow that extends the full-price selling window and improves inventory turns.",
+    issue:"One inventory across stores and online turns stock faster and frees up cash.",
+    areas:["How can receipt to availability shorten?", "How can stock move to where it sells?", "How fast do returns become sellable?", "Which fulfillment upgrades pay back fastest with the most sustainable effect?"],
+    profit:"More selling days, less working capital.",
+    m:["Receipt to availability", "Return-to-sellable time", "Stock transfer time", "Weeks of supply"]}
+  ]}
+];
+
+const ORDER={"Foundational":0,"Near-Term":1,"Compounding":2};
+(function nb(o){for(const k in o){if(typeof o[k]==='string'&&k!=='weight')o[k]=o[k].replace(/([A-Za-z])-([A-Za-z])/g,'$1\u2011$2');else if(o[k]&&typeof o[k]==='object')nb(o[k]);}})(L);
+L.forEach(l=>l.p.sort((x,y)=>ORDER[x.weight]-ORDER[y.weight]));
+const fitEl=document.getElementById('fit'), topEl=document.getElementById('topEl'), stage=document.getElementById('stage');
+let st={l:null,p:null}, prev={l:null,p:null};
+function mnav(i,n){return `<span class="mnav"><span role="button" aria-label="Previous" data-d="-1" class="${i===0?'off':''}">←</span><span role="button" aria-label="Next" data-d="1" class="${i===n-1?'off':''}">→</span></span>`;}
+function pstep(d){
+  let l=st.l, p=st.p+d;
+  if(p>=L[l].p.length){ if(l===L.length-1) return null; l++; p=0; }
+  if(p<0){ if(l===0) return null; l--; p=L[l].p.length-1; }
+  return [l,p];
+}
+function pnav(){
+  const first=st.l===0&&st.p===0, last=st.l===L.length-1&&st.p===L[st.l].p.length-1;
+  return `<span class="mnav"><span role="button" aria-label="Previous" data-d="-1" class="${first?'off':''}">←</span><span role="button" aria-label="Next" data-d="1" class="${last?'off':''}">→</span></span>`;
+}
+function topRow(){
+  const c=st.l!==null;
+  const back=c?(st.p!==null
+    ?{t:L[st.l].name.replace(' Strategy',' priorities'),n:L[st.l].p.length,i:st.p}
+    :{t:'All strategies',n:L.length,i:st.l}):null;
+  return `<div class="obj"><span class="label">Objective</span><b>Adjusted EBIT Growth</b></div>
+  ${back?`<div class="mback"><button class="bk" aria-label="Back to ${back.t}"><i>←</i><span>${back.t}</span></button><span class="dots" aria-hidden="true">${Array.from({length:back.n},(_,k)=>`<b class="${k===back.i?'on':''}"></b>`).join('')}</span></div>`:''}
+  <div class="levers${c?' compact':''}">`+L.map((l,i)=>`
+   <button class="lv${st.l===i?' on':''}${st.l===i&&prev.l===null?' enter':''}" data-l="${i}" aria-expanded="${st.l===i}">
+     <div class="row"><h3 class="one">${l.name}</h3><span class="chev" aria-hidden="true">⌄</span></div>${st.l===i?mnav(i,L.length):''}
+     <ul>${l.p.map(p=>`<li><span class="one">${p.name}</span></li>`).join('')}</ul>
+   </button>`).join('')+`</div>`;
+}
+function panel(){
+  if(st.l===null) return '';
+  const l=L[st.l], c=st.p!==null, anim=prev.l!==st.l?' fade':'';
+  let h=`<div class="panel${anim}"><div class="lhead"><p>${l.intro}</p></div>
+   <div class="prios${c?' compact':''}">${l.p.map((p,i)=>`<button class="prio${st.p===i?' on':''}${st.p===i&&prev.p===null?' enter':''}" data-p="${i}" aria-expanded="${st.p===i}"><div class="tags">${p.role?`<span class="role label">${p.role}</span>`:''}${p.weight?`<span class="wt label">${p.weight}</span>`:''}</div><h4 class="one">${p.name}</h4><p>${p.short}</p><div class="more label"><i>→</i>${st.p===i?'Close':'See detail'}</div>${st.p===i?pnav():''}</button>`).join('')}</div>`;
+  if(!c) h+=`<div class="measures"><div class="label">KPI<span style="text-transform:none">s</span></div><div class="mgrid${l.measures.length<=5?' row':''}">${l.measures.map(([m,t,p])=>`<div class="${p?'p':''}${m.length>40?' long':''}">${m}</div>`).join('')}</div></div>`;
+  else h+=detail();
+  return h+'</div>';
+}
+function detail(){
+  const p=L[st.l].p[st.p], anim=(prev.p!==st.p||prev.l!==st.l)?' fade':'';
+  const chain=p.chain?`<div class="chain">${p.chain.map((c,i)=>`<span class="label">${c}</span>${i<p.chain.length-1?'<i>→</i>':''}`).join('')}</div>`:'';
+  return `<div class="detail${anim}"><div class="d3">
+    <div class="card issue"><div class="label">The opportunity</div><p>${p.issue}</p>${chain}</div>
+    <div class="card"><div class="label">Areas to explore</div><ol class="qs">${p.areas.map(a=>`<li>${a}</li>`).join('')}</ol></div>
+    <div class="side"><div class="card red"><div class="label">Profitability link</div><p>${p.profit}</p></div><div class="card dark"><div class="label">Measures</div><ul>${p.m.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
+  </div></div>`;
+}
+function render(){
+  topEl.innerHTML=topRow(); fitEl.innerHTML=panel();
+  const bk=topEl.querySelector('.mback .bk'); if(bk) bk.onclick=()=>go(st.p!==null?st.l:null,null);
+  topEl.querySelectorAll('.lv .mnav span').forEach(b=>b.onclick=e=>{e.stopPropagation(); go(st.l+(+b.dataset.d),null);});
+  fitEl.querySelectorAll('.prio .mnav span').forEach(b=>b.onclick=e=>{e.stopPropagation(); const t=pstep(+b.dataset.d); if(t) go(t[0],t[1]);});
+  topEl.querySelectorAll('.lv').forEach(b=>b.onclick=()=>{const i=+b.dataset.l; go(st.l===i?(st.p!==null&&innerWidth<981?i:null):i,null);});
+  fitEl.querySelectorAll('.prio').forEach(b=>b.onclick=()=>{const i=+b.dataset.p; go(st.l,st.p===i?null:i);});
+}
+let GS=null;
+function applyScale(sc){fitEl.style.width=sc<1?(100/sc)+'%':'';fitEl.style.transform=sc<1?`scale(${sc})`:'';}
+function needScale(avail){
+  applyScale(1); if(fitEl.scrollHeight<=avail) return 1;
+  let lo=.55,hi=1; for(let k=0;k<8;k++){const m=(lo+hi)/2; applyScale(m); if(fitEl.scrollHeight*m<=avail) lo=m; else hi=m;} return lo;
+}
+function computeGS(){
+  if(window.innerWidth<981){GS=1;return;}
+  const saved={...st}, savedPrev={...prev}; let min=1;
+  const states=[]; L.forEach((l,i)=>{states.push([i,null]); l.p.forEach((_,j)=>states.push([i,j]));});
+  document.body.classList.add('notrans','focus'); void document.body.offsetHeight;
+  st={l:0,p:null}; topEl.innerHTML=topRow();
+  const avail=stage.clientHeight-48-topEl.offsetHeight;
+  for(const [i,j] of states){ st={l:i,p:j}; prev={...st}; fitEl.innerHTML=panel(); min=Math.min(min,needScale(avail)); }
+  st=saved; prev=savedPrev; document.body.classList.toggle('focus',st.l!==null);
+  void document.body.offsetHeight; document.body.classList.remove('notrans');
+  GS=min;
+}
+function fit(){
+  if(window.innerWidth<981){applyScale(1);return;}
+  if(st.l===null){ // opening page: fit on its own
+    const avail=stage.clientHeight-48-topEl.offsetHeight; applyScale(needScale(avail)); return; }
+  if(GS===null) { computeGS(); render(); }
+  applyScale(GS);
+}
+const SEL={1:'.lv',2:'.lhead,.prio,.measures',3:'.detail .card'};
+const depth=(l,p)=>l===null?1:p===null?2:3;
+let busy=false;
+function vis(sel){return [...document.querySelectorAll(sel)].filter(e=>e.offsetParent!==null);}
+function go(l,p){
+  if(busy) return;
+  const mob=window.innerWidth<981, d0=depth(st.l,st.p), d1=depth(l,p);
+  if(mob && d1<d0){
+    const els=vis(SEL[d0]).reverse(); busy=true;
+    els.forEach((e,k)=>{e.style.setProperty('--i',k); e.classList.add('ravel');});
+    setTimeout(()=>{busy=false; doGo(l,p); unravel(d1);}, 140+els.length*18);
+    return;
+  }
+  if(mob && d1>d0){
+    const keep=d0===1?topEl.querySelector(`.lv[data-l="${l}"]`):fitEl.querySelector(`.prio[data-p="${p}"]`);
+    const els=vis(SEL[d0]).filter(e=>e!==keep).reverse(); busy=true;
+    els.forEach((e,k)=>{e.style.setProperty('--i',k); e.classList.add('ravel');});
+    setTimeout(()=>{busy=false; doGo(l,p); unravel(d1);}, 140+els.length*18);
+    return;
+  }
+  doGo(l,p);
+}
+function unravel(d){
+  vis(SEL[d]).forEach((e,k)=>{e.style.setProperty('--i',k); e.classList.add('unravel'); e.addEventListener('animationend',ev=>{if(ev.target===e&&ev.animationName==='unravel')e.classList.remove('unravel');});});
+}
+let EQW=null;
+function equalizeL3(){
+  if(window.innerWidth>=981||st.p===null||EQW===window.innerWidth) return;
+  const panel=fitEl.querySelector('.panel'); if(!panel) return;
+  const box=document.createElement('div'); box.style.cssText='position:absolute;left:0;right:0;visibility:hidden;pointer-events:none';
+  const saved={...st}, savedPrev={...prev}; let html='';
+  L.forEach((l,i)=>l.p.forEach((_,j)=>{st={l:i,p:j}; prev={...st}; html+=detail();}));
+  st=saved; prev=savedPrev; box.innerHTML=html; panel.style.position='relative'; panel.appendChild(box);
+  const mx=[0,0,0,0];
+  box.querySelectorAll('.detail').forEach(d=>{
+    const c=[d.querySelector('.card.issue'),d.querySelector('.d3>.card:nth-child(2)'),d.querySelector('.card.red'),d.querySelector('.card.dark')];
+    c.forEach((e,k)=>{mx[k]=Math.max(mx[k],Math.ceil(e.getBoundingClientRect().height));});
+  });
+  box.remove();
+  mx.forEach((v,k)=>document.body.style.setProperty('--eq'+k,v+'px'));
+  EQW=window.innerWidth;
+}
+function doGo(l,p){
+  prev={...st}; st={l,p};
+  document.body.classList.toggle('focus',l!==null);
+  document.body.classList.toggle('lvl2',l!==null&&p===null);
+  document.body.classList.toggle('lvl3',p!==null);
+  render();
+  equalizeL3();
+  if(window.innerWidth<981 && prev.p!==null && st.p!==null && prev.l!==st.l){
+    const d=st.l>prev.l?1:-1;
+    [topEl.querySelector('.lv.on'),topEl.querySelector('.mback')].forEach(e=>{if(!e)return; e.style.setProperty('--dx',(d*90)+'px'); e.classList.add('xslide');});
+  }
+  window.scrollTo(0,0);
+  requestAnimationFrame(()=>{fit(); setTimeout(fit,380);});
+}
+(function(){
+  let x0=null,y0=0,t0=0;
+  stage.addEventListener('touchstart',e=>{if(window.innerWidth>=981||st.l===null){x0=null;return;} const t=e.touches[0]; x0=t.clientX; y0=t.clientY; t0=Date.now();},{passive:true});
+  stage.addEventListener('touchend',e=>{
+    if(x0===null||busy) return; const t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0; x0=null;
+    if(Math.abs(dx)<50||Math.abs(dx)<Math.abs(dy)*1.5||Date.now()-t0>700) return;
+    const d=dx<0?1:-1;
+    if(st.p!==null){const t=pstep(d); if(!t) return bump(d); go(t[0],t[1]);}
+    else {const n=st.l+d; if(n<0||n>=L.length) return bump(d); go(n,null);}
+    slide(d);
+  },{passive:true});
+  function slide(d){
+    const els=vis(st.p!==null?'.prio.on,'+SEL[3]:'.lv.on,'+SEL[2]);
+    els.forEach(e=>{e.style.setProperty('--dx',(d*40)+'px'); e.classList.remove('slidein'); void e.offsetWidth; e.classList.add('slidein');});
+  }
+  function bump(d){
+    const els=vis(st.p!==null?'.prio.on,'+SEL[3]:'.lv.on,'+SEL[2]);
+    els.forEach(e=>{e.style.setProperty('--dx',(d*-14)+'px'); e.classList.remove('bump'); void e.offsetWidth; e.classList.add('bump');});
+  }
+})();
+window.addEventListener('resize',()=>{GS=null; EQW=null; equalizeL3(); setTimeout(()=>{fit();},50);});
+go(null,null);
+</script>
+</body>
+</html>
