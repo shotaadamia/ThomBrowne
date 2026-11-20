@@ -83,6 +83,7 @@ body.focus .obj span.d{font-size:14.5px}
 @media(hover:hover){.prio:hover .more i{transform:translateX(3px)}}
 .prios.compact .prio{padding:13px 18px}
 .prios.compact .prio p{display:none}
+.prios.compact .prio.on p{display:block;color:#D3D9E4}
 .prios.compact .prio .role{margin-bottom:5px}
 .prios.compact .prio h4{font-size:17px}
 .prios.compact .prio .more{margin-top:6px}
@@ -344,8 +345,11 @@ body.focus header.hero{cursor:pointer}
  body.lvl3 .lv.on .mnav{display:none}
  body.lvl3 .prio.on{display:grid;grid-template-columns:1fr auto;column-gap:12px;align-items:center}
  body.lvl3 .prio.on .tags{grid-column:1/-1;margin-bottom:8px}
- body.lvl3 .prio.on .more,body.lvl3 .prio.on p{display:none}
- body.lvl3 .prio.on .mnav{position:static;transform:none}
+ body.lvl3 .prio.on .more{display:none}
+ body.lvl3 .prio.on p{display:block;grid-row:3;grid-column:1/-1;margin-top:8px;min-height:var(--eqp,0)}
+ body.lvl3 .prio.on .mnav{position:static;transform:none;grid-row:2;grid-column:2}
+ body.lvl3 .prio.on h4{grid-row:2;grid-column:1}
+ body.lvl3 .prio.on .tags{grid-row:1}
  body.lvl3 .card .label{margin-bottom:8px}
  body.lvl3 .qs li{margin-bottom:10px}
  body.lvl3 .qs li:last-child{margin-bottom:0}
@@ -555,6 +559,8 @@ function equalizeL3(){
   });
   box.remove();
   mx.forEach((v,k)=>document.body.style.setProperty('--eq'+k,v+'px'));
+  const pe=fitEl.querySelector('.prio.on p');
+  if(pe){ const o=pe.innerHTML; pe.style.minHeight='0'; let m=0; L.forEach(l=>l.p.forEach(q=>{pe.textContent=q.short; m=Math.max(m,pe.offsetHeight);})); pe.innerHTML=o; pe.style.minHeight=''; document.body.style.setProperty('--eqp',m+'px'); }
   EQW=window.innerWidth;
 }
 let DQW=null;
