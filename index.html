@@ -484,7 +484,7 @@ function detail(){
   return `<div class="detail${anim}"><div class="d3">
     <div class="card issue"><div class="label">The opportunity</div><p>${p.issue}</p>${chain}</div>
     <div class="card"><div class="label">Areas to explore</div><ol class="qs">${p.areas.map(a=>`<li>${a}</li>`).join('')}</ol></div>
-    <div class="side"><div class="card red"><div class="label">Profitability link</div><p>${p.profit}</p></div><div class="card dark"><div class="label">Priority measures</div><ul>${p.m.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
+    <div class="side"><div class="card red"><div class="label">Profitability link</div><p>${p.profit}</p></div><div class="card dark"><div class="label">Leading indicators</div><ul>${p.m.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
   </div></div>`;
 }
 function render(){
