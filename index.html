@@ -413,14 +413,35 @@ body.focus header.hero{cursor:pointer}
 <div class="app">
 <header class="hero"><div class="wrap">
 <h1><span class="l1">DTC-Led Expansion &amp; Profitability</span><span class="l2"> at <span style="white-space:nowrap">Thom Browne</span></span></h1>
-<p>Raise omnichannel productivity, deepen client relationships, and strengthen the operating platform for&nbsp;growth.</p>
-<ul class="msub"><li>Raise omnichannel productivity.</li><li>Deepen client relationships.</li><li>Strengthen the operating platform for growth.</li></ul>
+<p>Deepen client relationships, raise omnichannel productivity, and strengthen the operating platform for&nbsp;growth.</p>
+<ul class="msub"><li>Deepen client relationships.</li><li>Raise omnichannel productivity.</li><li>Strengthen the operating platform for growth.</li></ul>
 </div></header>
 <div class="stage" id="stage"><div class="wrap"><div id="topEl"></div><div class="fit" id="fit"></div></div></div>
 <footer class="credit"><div class="wrap">Prepared by Shota Adamia</div></footer>
 </div>
 <script>
 const L = [
+ {name:"Client Strategy", sub:"Wider reach, stronger digital, and upmarket depth.",
+  profit:"Wider reach, digital growth, and upmarket depth → Adjusted EBIT growth",
+  intro:"Expand client reach, map product to clients, and increase repeat spending from top clients.",
+  measures:[["Client acquisition, retention, lapse, reactivation"],["NPS"],["Cross\u2011category penetration"],["CLV"],["VIC margin"]],
+  p:[
+   {name:"Partnerships & Activations", weight:"Foundational", role:"Acquisition", short:"Selective products and events that expand client reach and strengthen brand positioning.",
+    issue:"Introduce product to adjacent client groups while strengthening brand equity.",
+    areas:["Which partner brands strengthen positioning?", "Which entry categories widen reach without diluting price levels?", "Which activations lead to conversion?", "How can we leverage partnership impressions?"],
+    profit:"Incremental full-price sales from new clients.",
+    m:["New clients", "AUR", "Event sales attribution", "New client repeat purchases"]},
+   {name:"Product-to-Client Mapping", weight:"Near-Term", role:"Engagement", short:"Connect product aesthetics to client segments, entry points, and purchasing journeys.",
+    issue:"Map aesthetic drivers across client segments to sharpen assortment architecture, messaging, and clienteling.",
+    areas:["Which product aesthetics attract new vs. existing clients?", "Which aesthetics drive second purchases?", "Which clients have the greatest unrealized cross-category potential?", "How are marketing strategies mapped to product performance?"],
+    profit:"Higher conversion and repeat purchasing.",
+    m:["Conversion by aesthetics", "Repeat purchase rate", "Cross-category penetration", "CLV"]},
+   {name:"VIC Clienteling", weight:"Compounding", role:"Loyalty", short:"Personalized service and private experiences that deepen client spend and brand advocacy.",
+    issue:"Build on what drives top clients through experiences and access that are hard to match.",
+    areas:["Which VICs are ready to move up a tier?", "Which exclusives and previews raise spend most?", "What contact cadence keeps VICs active?", "How can VIC advocacy and its PR uplift be quantified?"],
+    profit:"Higher repeat spend and margin.",
+    m:["VIC margin", "VIC retention", "VIC NPS", "VIC referrals"]}
+  ]},
  {name:"Productivity Strategy", sub:"Higher productivity across stores and digital.",
   profit:"Higher productivity across stores, digital, and teams → Adjusted EBIT growth",
   intro:"Match assortment and staffing to demand at each store, and give teams the data and tools to act faster.",
@@ -441,27 +462,6 @@ const L = [
     areas:["Which reports are automated?", "What is the reporting cadence?", "How should data access be governed?", "Which decision frameworks and owners work best?"],
     profit:"Faster, profit-led, data-informed decisions.",
     m:["Report adoption", "Data accuracy", "Reporting prep time", "Decision cycle time"]}
-  ]},
- {name:"Client Strategy", sub:"Wider reach, stronger digital, and upmarket depth.",
-  profit:"Wider reach, digital growth, and upmarket depth → Adjusted EBIT growth",
-  intro:"Expand client reach, map product to clients, and increase repeat spending from top clients.",
-  measures:[["Client acquisition, retention, lapse, reactivation"],["NPS"],["Cross\u2011category penetration"],["CLV"],["VIC margin"]],
-  p:[
-   {name:"Partnerships & Activations", weight:"Foundational", role:"Acquisition", short:"Selective products and events that expand client reach and strengthen brand positioning.",
-    issue:"Introduce product to adjacent client groups while strengthening brand equity.",
-    areas:["Which partner brands strengthen positioning?", "Which entry categories widen reach without diluting price levels?", "Which activations lead to conversion?", "How can we leverage partnership impressions?"],
-    profit:"Incremental full-price sales from new clients.",
-    m:["New clients", "AUR", "Event sales attribution", "New client repeat purchases"]},
-   {name:"Product-to-Client Mapping", weight:"Near-Term", role:"Engagement", short:"Connect product aesthetics to client segments, entry points, and purchasing journeys.",
-    issue:"Map aesthetic drivers across client segments to sharpen assortment architecture, messaging, and clienteling.",
-    areas:["Which product aesthetics attract new vs. existing clients?", "Which aesthetics drive second purchases?", "Which clients have the greatest unrealized cross-category potential?", "How are marketing strategies mapped to product performance?"],
-    profit:"Higher conversion, repeat purchasing, and cross-category spend.",
-    m:["Conversion by aesthetics", "Repeat purchase rate", "Cross-category penetration", "CLV"]},
-   {name:"VIC Clienteling", weight:"Compounding", role:"Loyalty", short:"Personalized service and private experiences that deepen client spend and brand advocacy.",
-    issue:"Build on what drives top clients through experiences and access that are hard to match.",
-    areas:["Which VICs are ready to move up a tier?", "Which exclusives and previews raise spend most?", "What contact cadence keeps VICs active?", "How can VIC advocacy and its PR uplift be quantified?"],
-    profit:"Higher repeat spend and margin.",
-    m:["VIC margin", "VIC retention", "VIC NPS", "VIC referrals"]}
   ]},
  {name:"Operating Strategy", sub:"Leaner sourcing, flexible price architecture, and focused capex.",
   profit:"Leaner cost, flexible price architecture, and streamlined working capital → Adjusted EBIT growth",
